@@ -1,0 +1,43 @@
+.action-button {
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+  color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.action-button.primary {
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+}
+
+.action-button.primary:hover {
+  background-color: #4cae4c;
+}
+
+.action-button.cancel {
+  background-color: #eb4345;
+}
+
+.action-button.cancel:hover {
+  background-color: #f84a4d;
+}
+
+.action-button.back {
+  background-color: #1264a3;
+}
+
+.action-button.back:hover {
+  background-color: #1d7fca;
+}
+
+.icon {
+  margin-left: 8px;
+}
