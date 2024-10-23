@@ -61,6 +61,7 @@ const CategoriesDropdown = () => {
         categories={categories}
         getBackgroundColor={getBackgroundColor}
         getTextColor={getTextColor}
+        isInStatus={false}
       />
     </div>
   );

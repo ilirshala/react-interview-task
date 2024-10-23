@@ -1,5 +1,6 @@
 import { CheckOutlined } from "@ant-design/icons";
 import React from "react";
+import "./style.css";
 
 const DropdownList = ({
   openDropdown,
@@ -8,6 +9,8 @@ const DropdownList = ({
   categories,
   getBackgroundColor,
   getTextColor,
+  isInStatus,
+  onClickStatus,
 }) => (
   <div
     className={`dropdownList ${openDropdown ? "show" : ""}`}
@@ -20,15 +23,17 @@ const DropdownList = ({
     {items.map((item) => (
       <div
         key={item}
-        className="dropdownListItem"
-        onClick={() => toggleCategory(item)}
+        className={`dropdownListItem ${isInStatus ? "statusItem" : ""} `}
+        onClick={
+          isInStatus ? () => onClickStatus(item) : () => toggleCategory(item)
+        }
         style={{
-          backgroundColor: getBackgroundColor(item),
-          color: getTextColor(item),
+          backgroundColor: !isInStatus && getBackgroundColor(item),
+          color: !isInStatus && getTextColor(item),
         }}
       >
         <p>{item}</p>
-        {categories.includes(item) && <CheckOutlined />}
+        {!isInStatus && categories.includes(item) && <CheckOutlined />}
       </div>
     ))}
   </div>

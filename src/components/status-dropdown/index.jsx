@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DropdownInput from "../dropdown-input";
 import "./style.css";
-import DropdownList from "./dropdown-list";
+import DropdownList from "../categories-dropdown/dropdown-list";
 
 const StatusDropdown = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -26,6 +26,7 @@ const StatusDropdown = () => {
         items={dropdownItems}
         openDropdown={openDropdown}
         onClickStatus={handleSelectStatus}
+        isInStatus={true}
       />
     </div>
   );

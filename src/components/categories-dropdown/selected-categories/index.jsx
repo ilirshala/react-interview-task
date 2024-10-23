@@ -1,6 +1,6 @@
 import { CloseSquareTwoTone } from "@ant-design/icons";
 import React from "react";
-
+import "./style.css";
 const SelectedCategories = ({
   categories,
   removeCategory,
