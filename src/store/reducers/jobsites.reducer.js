@@ -5,6 +5,9 @@ import {
   ADD_JOBSITE,
   ADD_JOBSITE_SUCCESS,
   ADD_JOBSITE_FAIL,
+  DELETE_JOBSITE,
+  DELETE_JOBSITE_SUCCESS,
+  DELETE_JOBSITE_FAIL,
 } from "../actionTypes";
 
 const INITIAL_STATE = {
@@ -15,6 +18,10 @@ const INITIAL_STATE = {
   addJobsiteLoading: false,
   addJobsiteSuccess: false,
   addJobsiteError: null,
+
+  deleteJobsiteLoading: false,
+  deleteJobsiteSuccess: false,
+  deleteJobsiteError: null,
 
   jobsites: [],
 };
@@ -64,6 +71,31 @@ const jobsiteReducer = (state = INITIAL_STATE, action) => {
         addJobsiteLoading: false,
         addJobsiteSuccess: false,
         addJobsiteError: action.payload,
+      };
+    case DELETE_JOBSITE:
+      return {
+        ...state,
+        deleteJobsiteLoading: true,
+        deleteJobsiteSuccess: false,
+        deleteJobsiteError: null,
+      };
+    case DELETE_JOBSITE_SUCCESS:
+      const filteredJobsites = state.jobsites.filter(
+        (jobsite) => jobsite.id !== action.payload.id
+      );
+      return {
+        ...state,
+        deleteJobsiteLoading: false,
+        deleteJobsiteSuccess: true,
+        deleteJobsiteError: null,
+        jobsites: filteredJobsites,
+      };
+    case DELETE_JOBSITE_FAIL:
+      return {
+        ...state,
+        deleteJobsiteLoading: false,
+        deleteJobsiteSuccess: false,
+        deleteJobsiteError: action.payload,
       };
     default:
       return state;

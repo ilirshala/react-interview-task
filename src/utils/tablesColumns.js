@@ -1,6 +1,5 @@
-import { Button, Space } from "antd";
 import StatusCard from "../components/status-card";
-import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
+import JobSiteRowActions from "../components/jobsites-table/row-actions";
 
 export const jobSitesTableColumns = [
   {
@@ -20,18 +19,8 @@ export const jobSitesTableColumns = [
     ),
   },
   {
-    title: "Action",
+    title: "Delete",
     key: "action",
-    render: (_, record) => (
-      <Space size="middle">
-        <Button style={{ backgroundColor: "#1890FF" }}>
-          <EditTwoTone twoToneColor={"#fff"} />
-        </Button>
-
-        <Button style={{ backgroundColor: "#FF4D4F" }}>
-          <DeleteTwoTone twoToneColor={"#fff"} />
-        </Button>
-      </Space>
-    ),
+    render: (_, record) => <JobSiteRowActions jobsiteId={record?.id} />,
   },
 ];

@@ -5,6 +5,9 @@ import {
   ADD_JOBSITE,
   ADD_JOBSITE_SUCCESS,
   ADD_JOBSITE_FAIL,
+  DELETE_JOBSITE,
+  DELETE_JOBSITE_SUCCESS,
+  DELETE_JOBSITE_FAIL,
 } from "../actionTypes";
 import api from "../../service/axios.interceptors";
 
@@ -37,6 +40,20 @@ export const addJobsite = (body) => {
       }
     } catch (error) {
       dispatch({ type: ADD_JOBSITE_FAIL, payload: error });
+    }
+  };
+};
+
+export const deleteJobsite = (jobsiteId) => {
+  return async (dispatch) => {
+    dispatch({ type: DELETE_JOBSITE });
+    try {
+      const response = await api.delete(`/jobsites/${jobsiteId}`);
+      if (response.status >= 200 && response.status < 300) {
+        dispatch({ type: DELETE_JOBSITE_SUCCESS, payload: response.data });
+      }
+    } catch (error) {
+      dispatch({ type: DELETE_JOBSITE_FAIL, payload: error });
     }
   };
 };

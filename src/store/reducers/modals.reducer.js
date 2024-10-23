@@ -1,7 +1,13 @@
-import { TOGGLE_ADD_JOBSITE_MODAL } from "../actionTypes";
+import {
+  TOGGLE_ADD_JOBSITE_MODAL,
+  TOGGLE_DELETE_JOBSITE_MODAL,
+} from "../actionTypes";
 
 const INITIAL_STATE = {
   isAddJobsiteModalOpen: false,
+  isDeleteJobsiteModalOpen: false,
+
+  jobsiteToDeleteId: null,
 };
 
 const modalsReducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +16,12 @@ const modalsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isAddJobsiteModalOpen: !state.isAddJobsiteModalOpen,
+      };
+    case TOGGLE_DELETE_JOBSITE_MODAL:
+      return {
+        ...state,
+        isDeleteJobsiteModalOpen: !state.isDeleteJobsiteModalOpen,
+        jobsiteToDeleteId: action.payload,
       };
     default:
       return state;

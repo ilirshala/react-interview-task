@@ -6,6 +6,8 @@ const ActionButton = ({
   type = "primary",
   primaryText,
   primaryIcon,
+  cancelIcon = <CloseOutlined className="icon" />,
+  cancelText = "Cancel Changes",
   onClickPrimary,
   onClickCancel,
   onClickBack,
@@ -19,8 +21,8 @@ const ActionButton = ({
     ),
     cancel: (
       <button className="action-button cancel" onClick={onClickCancel}>
-        <span>Cancel Changes</span>
-        <CloseOutlined className="icon" />
+        <span>{cancelText}</span>
+        {cancelIcon}
       </button>
     ),
     back: (

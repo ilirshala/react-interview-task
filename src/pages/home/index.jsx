@@ -4,6 +4,7 @@ import JobSitesTable from "../../components/jobsites-table";
 import { useDispatch } from "react-redux";
 import { getJobSites } from "../../store/actions/jobsites.action";
 import AddJobsiteModal from "../../components/modals/add-jobsite-modal";
+import DeleteJobsiteModal from "../../components/modals/delete-jobiste-modal";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Home = () => {
   return (
     <>
       <AddJobsiteModal />
+      <DeleteJobsiteModal />
       <HomeStatuses />
       <JobSitesTable />
     </>

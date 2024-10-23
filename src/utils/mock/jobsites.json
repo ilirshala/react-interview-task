@@ -1,34 +1,9 @@
 {
   "jobsites": [
     {
-      "id": "1",
-      "jobsitename": "Jobsite 1",
-      "description": "description",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "244a",
-      "jobsitename": "jobsiteee",
+      "id": "85bd",
+      "jobsitename": "asdasd",
       "categories": [
-        "Sidewalk Shed",
-        "Scaffold"
-      ],
-      "status": "in_progress"
-    },
-    {
-      "id": "c48d",
-      "jobsitename": "jobsiteee",
-      "categories": [
-        "Sidewalk Shed",
-        "Scaffold"
-      ],
-      "status": "on_hold"
-    },
-    {
-      "id": "c815",
-      "jobsitename": "jobsiteee",
-      "categories": [
-        "Sidewalk Shed",
         "Scaffold"
       ],
       "status": "in_progress"
