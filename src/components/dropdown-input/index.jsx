@@ -15,7 +15,9 @@ const DropdownInput = ({
   };
   return (
     <div
-      className="dropdownInput"
+      className={`dropdownInput ${
+        placeholder !== "Select one" && isStatusDropdown && "selectedStatus"
+      }`}
       onClick={toggleDropdown}
       style={{
         borderBottomLeftRadius: openDropdown ? "0" : "5px",
@@ -31,9 +33,14 @@ const DropdownInput = ({
               height: "10px",
               width: "10px",
               borderRadius: "200px",
+              display: placeholder === "Select one" && "none",
             }}
           />
-          <p>{placeholder}</p>
+          {placeholder === "Select one" ? (
+            <span>{placeholder}</span>
+          ) : (
+            <p>{placeholder}</p>
+          )}
         </Flex>
       ) : (
         <span>{placeholder}</span>

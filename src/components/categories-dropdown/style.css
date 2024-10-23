@@ -8,6 +8,10 @@
   align-items: center;
   justify-content: space-between;
 }
+.dropdownInput.selectedStatus {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 1px 1px rgba(0, 0, 0, 0.05);
+}
 .dropdownInput span {
   color: #e0e0e1;
 }
