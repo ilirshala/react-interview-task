@@ -1,31 +1,25 @@
 import React, { useState } from "react";
 import "./style.css";
-import {
-  CaretDownOutlined,
-  CaretUpOutlined,
-  CheckOutlined,
-  CloseSquareTwoTone,
-} from "@ant-design/icons";
+import DropdownInput from "./dropdown-input";
+import SelectedCategories from "./selected-categories";
+import DropdownList from "./dropdown-list";
 
-const Dropdown = () => {
+const CategoriesDropdown = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [categories, setCategories] = useState([]);
+  const dropdownItems = ["Sidewalk Shed", "Scaffold", "Shoring"];
 
   const handleAddCategory = (category) => {
     if (!categories.includes(category)) {
       setCategories([...categories, category]);
     } else {
-      const updatedCategories = categories.filter((cat) => cat !== category);
-      setCategories(updatedCategories);
+      removeCategory(category);
     }
   };
 
-  const handleRemoveCategory = (category) => {
-    const updatedCategories = categories.filter((cat) => cat !== category);
-    setCategories(updatedCategories);
+  const removeCategory = (category) => {
+    setCategories((prev) => prev.filter((cat) => cat !== category));
   };
-
-  const dropdownItems = ["Sidewalk Shed", "Scaffold", "Shoring"];
 
   const getBackgroundColor = (item) => {
     if (categories.includes("Scaffold") && item === "Scaffold")
@@ -40,69 +34,35 @@ const Dropdown = () => {
 
   return (
     <div>
-      <h5>Dropdown</h5>
+      <h5>Category Included</h5>
+      <DropdownInput
+        openDropdown={openDropdown}
+        toggleDropdown={() => setOpenDropdown(!openDropdown)}
+      />
       <div
-        className="dropdownInput"
-        onClick={() => setOpenDropdown(!openDropdown)}
-        style={{
-          borderBottomLeftRadius: openDropdown ? "0" : "5px",
-          borderBottomRightRadius: openDropdown ? "0" : "5px",
-        }}
-      >
-        <span>Select</span>
-        {openDropdown ? (
-          <CaretUpOutlined className="icon" />
-        ) : (
-          <CaretDownOutlined className="icon" />
-        )}
-      </div>
-      <div
-        className="selectedCategories"
+        className="selectedCategoriesContainer"
         style={{
           opacity: !openDropdown ? "1" : "0",
-          transition: " opacity 0.2s ease-in-out",
+          transition: "opacity 0.2s ease-in-out",
         }}
       >
-        {categories?.map((cat) => (
-          <div className="selectedCategory">
-            <div
-              className="dot"
-              style={{ backgroundColor: getBackgroundColor(cat) }}
-            />
-            <p>{cat}</p>
-            <CloseSquareTwoTone
-              twoToneColor={"#ff0000"}
-              onClick={() => handleRemoveCategory(cat)}
-            />
-          </div>
-        ))}
+        <SelectedCategories
+          categories={categories}
+          removeCategory={removeCategory}
+          getBackgroundColor={getBackgroundColor}
+        />
       </div>
 
-      <div
-        className={`dropdownList ${openDropdown ? "show" : ""}`}
-        style={{
-          maxHeight: openDropdown ? "500px" : "0",
-          opacity: openDropdown ? "1" : "0",
-          transition: "max-height 0.2s ease-in-out, opacity 0.2s ease-in-out",
-        }}
-      >
-        {dropdownItems.map((item) => (
-          <div
-            key={item}
-            className="dropdownListItem"
-            onClick={() => handleAddCategory(item)}
-            style={{
-              backgroundColor: getBackgroundColor(item),
-              color: getTextColor(item),
-            }}
-          >
-            <p>{item}</p>
-            {categories.includes(item) && <CheckOutlined />}
-          </div>
-        ))}
-      </div>
+      <DropdownList
+        openDropdown={openDropdown}
+        items={dropdownItems}
+        toggleCategory={handleAddCategory}
+        categories={categories}
+        getBackgroundColor={getBackgroundColor}
+        getTextColor={getTextColor}
+      />
     </div>
   );
 };
 
-export default Dropdown;
+export default CategoriesDropdown;
