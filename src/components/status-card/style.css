@@ -10,6 +10,11 @@
   font-weight: bold;
   box-shadow: none;
 }
+.status-card.small {
+  width: 130px;
+  height: 35px;
+  font-size: 14px;
+}
 .status-card.completed {
   background-color: #7ac14d;
 }

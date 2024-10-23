@@ -1,14 +1,14 @@
 import { Card } from "antd";
 import React from "react";
-import BigStatusCard from "../big-status-card";
+import StatusCard from "../status-card";
 import "./style.css";
 
 const HomeStatuses = () => {
   return (
     <Card className="home-statuses" bordered={false}>
-      <BigStatusCard status="onRoad" />
-      <BigStatusCard status="Completed" />
-      <BigStatusCard status="onHold" />
+      <StatusCard status="onRoad" />
+      <StatusCard status="Completed" />
+      <StatusCard status="onHold" />
     </Card>
   );
 };
