@@ -4,9 +4,8 @@ import DropdownInput from "../dropdown-input";
 import SelectedCategories from "./selected-categories";
 import DropdownList from "../dropdown-list";
 
-const CategoriesDropdown = () => {
+const CategoriesDropdown = ({ categories, setCategories }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [categories, setCategories] = useState([]);
   const dropdownItems = ["Sidewalk Shed", "Scaffold", "Shoring"];
 
   const handleAddCategory = (category) => {

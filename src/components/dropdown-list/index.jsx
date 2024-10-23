@@ -32,8 +32,10 @@ const DropdownList = ({
           color: !isInStatus && getTextColor(item),
         }}
       >
-        <p>{item}</p>
-        {!isInStatus && categories.includes(item) && <CheckOutlined />}
+        <p>{item?.label || item}</p>
+        {!isInStatus && categories.includes(item?.label || item) && (
+          <CheckOutlined />
+        )}
       </div>
     ))}
   </div>

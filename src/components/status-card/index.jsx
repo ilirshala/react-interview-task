@@ -8,8 +8,8 @@ const StatusCard = ({
   cardSize = "big",
 }) => {
   const statusLabel = () => {
-    if (status === "onRoad") return "On Road";
-    else if (status === "onHold") return "On Hold";
+    if (status === "in_progress") return "On Road";
+    else if (status === "on_hold") return "On Hold";
     else return "Completed";
   };
 

@@ -2,10 +2,20 @@ import React, { useState } from "react";
 import DropdownInput from "../dropdown-input";
 import DropdownList from "../dropdown-list";
 
-const StatusDropdown = () => {
+const StatusDropdown = ({ status, setStatus }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [status, setStatus] = useState("");
-  const dropdownItems = ["Completed", "In progress", "On Hold"];
+
+  const dropdownItems = [
+    {
+      label: "Completed",
+      key: "completed",
+    },
+    {
+      label: "In progress",
+      key: "in_progress",
+    },
+    { label: "On Hold", key: "on_hold" },
+  ];
 
   const handleSelectStatus = (status) => {
     setStatus(status);
@@ -18,7 +28,7 @@ const StatusDropdown = () => {
       <DropdownInput
         openDropdown={openDropdown}
         toggleDropdown={() => setOpenDropdown(!openDropdown)}
-        placeholder={status || "Select one"}
+        placeholder={status?.label || "Select one"}
         isStatusDropdown={true}
       />
       <DropdownList
