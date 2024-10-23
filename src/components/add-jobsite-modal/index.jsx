@@ -1,4 +1,4 @@
-import { Modal } from "antd";
+import { Flex, Modal } from "antd";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleAddJobsiteModal } from "../../store/actions/modals.action";
@@ -6,6 +6,7 @@ import ActionButton from "../action-button";
 import { CheckOutlined } from "@ant-design/icons";
 import InputField from "../input-field";
 import Dropdown from "../categories-dropdown";
+import StatusDropdown from "../status-dropdown";
 
 const AddJobsiteModal = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,14 @@ const AddJobsiteModal = () => {
       ]}
     >
       <InputField placeholder={"Type the jobsite’s name"} label={"Name"} />
-      <Dropdown />
+      <Flex gap={"middle"}>
+        <div style={{ flex: 0.75 }}>
+          <Dropdown />
+        </div>
+        <div style={{ flex: 0.35 }}>
+          <StatusDropdown />
+        </div>
+      </Flex>
     </Modal>
   );
 };

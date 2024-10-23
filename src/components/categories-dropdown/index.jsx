@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
-import DropdownInput from "./dropdown-input";
+import DropdownInput from "../dropdown-input";
 import SelectedCategories from "./selected-categories";
 import DropdownList from "./dropdown-list";
 
@@ -38,6 +38,7 @@ const CategoriesDropdown = () => {
       <DropdownInput
         openDropdown={openDropdown}
         toggleDropdown={() => setOpenDropdown(!openDropdown)}
+        placeholder={"Select"}
       />
       <div
         className="selectedCategoriesContainer"
