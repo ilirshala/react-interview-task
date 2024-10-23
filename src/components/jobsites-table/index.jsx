@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Button, Space, Table } from "antd";
+import { Button, Card, Space, Table } from "antd";
 import StatusCard from "../status-card";
 import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
+import TableActions from "./table-actions";
 
 const columns = [
   {
@@ -51,7 +52,12 @@ const data = [
 ];
 
 const JobSitesTable = () => {
-  return <Table columns={columns} dataSource={data} />;
+  return (
+    <Card bordered={false}>
+      <TableActions />
+      <Table columns={columns} dataSource={data} />
+    </Card>
+  );
 };
 
 export default JobSitesTable;
