@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import DropdownInput from "../dropdown-input";
-import "./style.css";
-import DropdownList from "../categories-dropdown/dropdown-list";
+import DropdownList from "../dropdown-list";
 
 const StatusDropdown = () => {
   const [openDropdown, setOpenDropdown] = useState(false);

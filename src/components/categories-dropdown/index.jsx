@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./style.css";
 import DropdownInput from "../dropdown-input";
 import SelectedCategories from "./selected-categories";
-import DropdownList from "./dropdown-list";
+import DropdownList from "../dropdown-list";
 
 const CategoriesDropdown = () => {
   const [openDropdown, setOpenDropdown] = useState(false);

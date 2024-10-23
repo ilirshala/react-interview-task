@@ -1,12 +1,12 @@
 import { Flex, Modal } from "antd";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleAddJobsiteModal } from "../../store/actions/modals.action";
-import ActionButton from "../action-button";
+import { toggleAddJobsiteModal } from "../../../store/actions/modals.action";
+import ActionButton from "../../action-button";
 import { CheckOutlined } from "@ant-design/icons";
-import InputField from "../input-field";
-import Dropdown from "../categories-dropdown";
-import StatusDropdown from "../status-dropdown";
+import InputField from "../../input-field";
+import Dropdown from "../../categories-dropdown";
+import StatusDropdown from "../../status-dropdown";
 
 const AddJobsiteModal = () => {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const AddJobsiteModal = () => {
       ]}
     >
       <InputField placeholder={"Type the jobsite’s name"} label={"Name"} />
-      <Flex gap={"middle"}>
+      <Flex gap={"middle"} style={{ marginTop: "10px" }}>
         <div style={{ flex: 0.75 }}>
           <Dropdown />
         </div>
