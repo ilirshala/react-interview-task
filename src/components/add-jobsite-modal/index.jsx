@@ -1,10 +1,11 @@
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleAddJobsiteModal } from "../../store/actions/modals.action";
 import ActionButton from "../action-button";
 import { CheckOutlined } from "@ant-design/icons";
 import InputField from "../input-field";
+import Dropdown from "../categories-dropdown";
 
 const AddJobsiteModal = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const AddJobsiteModal = () => {
             alignItems: "center",
             justifyContent: "flex-end",
             gap: "10px",
+            marginTop: "70px",
           }}
         >
           <ActionButton type="cancel" onClickCancel={handleCloseModal} />
@@ -37,6 +39,7 @@ const AddJobsiteModal = () => {
       ]}
     >
       <InputField placeholder={"Type the jobsite’s name"} label={"Name"} />
+      <Dropdown />
     </Modal>
   );
 };
