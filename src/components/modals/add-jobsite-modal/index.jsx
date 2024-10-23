@@ -7,7 +7,7 @@ import { CheckOutlined } from "@ant-design/icons";
 import InputField from "../../input-field";
 import Dropdown from "../../categories-dropdown";
 import StatusDropdown from "../../status-dropdown";
-import { addJobsite } from "../../../store/actions/getJobSites.action";
+import { addJobsite } from "../../../store/actions/jobsites.action";
 
 const AddJobsiteModal = () => {
   const dispatch = useDispatch();
