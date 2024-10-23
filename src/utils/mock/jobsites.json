@@ -2,9 +2,15 @@
     "jobsites": [
         {
             "id": 1,
-            "name": "Jobsite 1",
+            "jobsitename": "Jobsite 1",
             "description": "description",
             "status": "COMPLETED"
+        },
+        {
+            "id": 2,
+            "jobsitename": "Jobsite 2",
+            "description": "description",
+            "status": "onRoad"
         }
     ]
 }
