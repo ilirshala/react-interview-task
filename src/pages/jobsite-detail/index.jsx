@@ -1,7 +1,7 @@
 import { Card, Flex, Table } from "antd";
 import React, { useEffect, useState, useMemo } from "react";
 import "./style.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ActionButton from "../../components/action-button";
 import noService from "../../assets/noService.png";
@@ -14,6 +14,7 @@ import { useSearch } from "../../hooks/useSearch";
 
 const JobsiteDetail = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { jobsiteId } = useParams();
   const { jobsites } = useSelector((state) => state.jobsites);
   const { categories } = useSelector((state) => state.categories);
@@ -63,7 +64,7 @@ const JobsiteDetail = () => {
             ))}
           </ul>
           <div className="buttonContainer">
-            <ActionButton type="back" />
+            <ActionButton type="back" onClickBack={() => navigate("/")} />
           </div>
         </Card>
         <Card bordered={false} className="detailsTable">
