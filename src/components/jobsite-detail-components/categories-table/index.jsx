@@ -1,4 +1,4 @@
-import { Card, Table } from "antd";
+import { Card, Flex, Table } from "antd";
 import React from "react";
 import noService from "../../../assets/noService.png";
 import TableActions from "../../table-actions";
@@ -12,17 +12,13 @@ const CategoriesTable = ({ selectedCategory }) => {
     useCategoriesTable(selectedCategory);
   return (
     <Card bordered={false} className="detailsTable">
-      <div className="categoriesListHeader">
-        <h3>Data Grid</h3>
-      </div>
-      {selectedCategory === null ? (
-        <div className="detailsTableNoService">
-          <img src={noService} alt="" />
-          <h4>No Service Selected</h4>
-          <p>Please select a service on your left to proceed.</p>
-        </div>
-      ) : (
-        <>
+      <Flex
+        align="center"
+        justify="space-between"
+        className="categoriesListHeader"
+      >
+        <h3>{selectedCategory || "Data Grid"}</h3>
+        {selectedCategory && (
           <TableActions
             title={selectedCategory}
             onClickAddButton={() =>
@@ -39,8 +35,16 @@ const CategoriesTable = ({ selectedCategory }) => {
             onChangeSearch={(e) => setSearchQuery(e.target.value)}
             placeholder={"Search category"}
           />
-          <Table columns={categoriesTableColumns} dataSource={filteredItems} />
-        </>
+        )}
+      </Flex>
+      {selectedCategory === null ? (
+        <div className="detailsTableNoService">
+          <img src={noService} alt="" />
+          <h4>No Service Selected</h4>
+          <p>Please select a service on your left to proceed.</p>
+        </div>
+      ) : (
+        <Table columns={categoriesTableColumns} dataSource={filteredItems} />
       )}
     </Card>
   );

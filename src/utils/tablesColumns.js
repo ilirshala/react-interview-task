@@ -1,5 +1,4 @@
 import StatusCard from "../components/status-card";
-import JobSiteRowActions from "../components/jobsites-table/row-actions";
 import EditButton from "../components/edit-button";
 
 export const jobSitesTableColumns = [
@@ -17,11 +16,6 @@ export const jobSitesTableColumns = [
         <StatusCard status={status} cardSize="small" />
       </>
     ),
-  },
-  {
-    title: "Delete",
-    key: "action",
-    render: (_, record) => <JobSiteRowActions jobsiteId={record?.id} />,
   },
 ];
 

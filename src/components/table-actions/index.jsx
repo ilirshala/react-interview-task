@@ -4,17 +4,14 @@ import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import ActionButton from "../action-button";
 
 const TableActions = ({
-  title,
   searchValue,
   onChangeSearch,
   onClickAddButton,
   placeholder,
+  style,
 }) => {
   return (
-    <Flex style={{ marginBottom: "20px" }} justify="space-between">
-      <Flex gap={"small"} align="center">
-        <h4>{title}</h4>
-      </Flex>
+    <Flex style={style} justify="flex-end">
       <Flex gap={"small"} align="center">
         <Input
           size="medium"
