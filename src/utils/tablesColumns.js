@@ -1,5 +1,6 @@
 import StatusCard from "../components/status-card";
 import JobSiteRowActions from "../components/jobsites-table/row-actions";
+import EditButton from "../components/edit-button";
 
 export const jobSitesTableColumns = [
   {
@@ -54,5 +55,10 @@ export const categoriesTableColumns = [
     dataIndex: "notes",
     key: "notes",
     render: (_, { notes }) => <p>{notes}</p>,
+  },
+  {
+    title: "Edit",
+    key: "action",
+    render: (_, record) => <EditButton />,
   },
 ];
