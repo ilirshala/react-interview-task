@@ -1,30 +1,15 @@
 import { Card, Table } from "antd";
-import React, { useMemo, useState } from "react";
+import React from "react";
 import noService from "../../../assets/noService.png";
 import TableActions from "../../table-actions";
-import { useDispatch, useSelector } from "react-redux";
 import { toggleCategoryModal } from "../../../store/actions/modals.action";
-import { useParams } from "react-router-dom";
 import { categoriesTableColumns } from "../../../utils/tablesColumns";
-import { useSearch } from "../../../hooks/useSearch";
 import "./style.css";
+import { useCategoriesTable } from "../../../hooks/useCategoriesTable";
 
 const CategoriesTable = ({ selectedCategory }) => {
-  const { jobsiteId } = useParams();
-  const dispatch = useDispatch();
-  const [searchQuery, setSearchQuery] = useState("");
-  const { categories } = useSelector((state) => state.categories);
-
-  const filterCategoriesByCategory = useMemo(() => {
-    return categories?.filter(
-      (category) => category?.category === selectedCategory
-    );
-  }, [categories, selectedCategory]);
-
-  const { filteredItems } = useSearch(
-    searchQuery,
-    filterCategoriesByCategory || []
-  );
+  const { dispatch, filteredItems, jobsiteId, setSearchQuery, searchQuery } =
+    useCategoriesTable(selectedCategory);
   return (
     <Card bordered={false} className="detailsTable">
       <div className="categoriesListHeader">

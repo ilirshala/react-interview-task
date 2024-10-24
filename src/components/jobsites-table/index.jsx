@@ -1,29 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React from "react";
 import { Card, Table } from "antd";
 import TableActions from "../table-actions";
-import { useDispatch, useSelector } from "react-redux";
-import { jobSitesTableColumns } from "../../utils/tablesColumns";
-import { useNavigate } from "react-router-dom";
 import { toggleAddJobsiteModal } from "../../store/actions/modals.action";
-import { useSearch } from "../../hooks/useSearch";
+import { useJobsiteTable } from "../../hooks/useJobsiteTable";
 const JobSitesTable = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { jobsites } = useSelector((state) => state.jobsites);
-  const [searchQuery, setSearchQuery] = useState("");
-  const { filteredItems } = useSearch(searchQuery, jobsites);
-  const columnsWithNavigation = jobSitesTableColumns.map((col) => {
-    if (col.dataIndex === "jobsitename") {
-      return {
-        ...col,
-        render: (text, record) => (
-          <a onClick={() => navigate(`/${record.id}`)}>{text}</a>
-        ),
-      };
-    }
-    return col;
-  });
+  const {
+    dispatch,
+    searchQuery,
+    setSearchQuery,
+    filteredItems,
+    columnsWithNavigation,
+  } = useJobsiteTable();
   return (
     <Card bordered={false}>
       <TableActions
