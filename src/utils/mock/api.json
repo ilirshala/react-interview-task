@@ -17,12 +17,22 @@
         "Shoring"
       ],
       "status": "in_progress"
+    },
+    {
+      "id": "5fc6",
+      "jobsitename": "Test Jobsite name",
+      "categories": [
+        "Sidewalk Shed",
+        "Scaffold",
+        "Shoring"
+      ],
+      "status": "completed"
     }
   ],
   "categories": [
     {
       "id": "1",
-      "jobsiteId": "85bd",
+      "jobsiteId": "5fc6",
       "category": "Sidewalk Shed",
       "item": "G42295",
       "quantity": 10,

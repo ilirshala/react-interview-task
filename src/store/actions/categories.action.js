@@ -13,7 +13,7 @@ export const getCategories = (jobsiteId) => {
       const response = await api.get(`/categories`);
 
       if (response.status >= 200 && response.status < 300) {
-        const filteredCategories = response.data.categories.filter(
+        const filteredCategories = response.data.filter(
           (category) => category.jobsiteId === jobsiteId
         );
 

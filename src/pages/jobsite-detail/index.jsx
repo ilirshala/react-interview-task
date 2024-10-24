@@ -1,4 +1,4 @@
-import { Card, Flex } from "antd";
+import { Card, Flex, Table } from "antd";
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import { useParams } from "react-router-dom";
@@ -6,13 +6,18 @@ import { useDispatch, useSelector } from "react-redux";
 import ActionButton from "../../components/action-button";
 import noService from "../../assets/noService.png";
 import { getCategories } from "../../store/actions/categories.action";
+import TableActions from "../../components/jobsites-table/table-actions";
+import { categoriesTableColumns } from "../../utils/tablesColumns";
 
 const JobsiteDetail = () => {
   const dispatch = useDispatch();
   const { jobsiteId } = useParams();
   const { jobsites } = useSelector((state) => state.jobsites);
+  const { categories } = useSelector((state) => state.categories);
   const [selectedCategory, setSelectedCategory] = useState(null);
-
+  const filterCategoriesByCategory = categories?.filter(
+    (category) => category?.category === selectedCategory
+  );
   const selectedJobsite = jobsites?.find(
     (jobsite) => jobsite?.id === jobsiteId
   );
@@ -22,8 +27,8 @@ const JobsiteDetail = () => {
   };
 
   useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
+    dispatch(getCategories(jobsiteId));
+  }, [dispatch, jobsiteId]);
   return (
     <Flex gap={"middle"} className="jobDetails">
       <Card bordered={false} className="categoriesList">
@@ -49,12 +54,23 @@ const JobsiteDetail = () => {
         <div className="categoriesListHeader">
           <h3>Data Grid</h3>
         </div>
-        {selectedCategory === null && (
+        {selectedCategory === null ? (
           <div className="detailsTableNoService">
             <img src={noService} alt="" />
             <h4>No Service Selected</h4>
             <p>Please select a service on your left to proceed.</p>
           </div>
+        ) : (
+          <>
+            <TableActions
+              title={selectedCategory}
+              // onClickAddButton={() => dispatch(toggleAddJobsiteModal())}
+            />
+            <Table
+              columns={categoriesTableColumns}
+              dataSource={filterCategoriesByCategory}
+            />
+          </>
         )}
       </Card>
     </Flex>

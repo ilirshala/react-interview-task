@@ -2,10 +2,12 @@
 import React from "react";
 import { Card, Table } from "antd";
 import TableActions from "./table-actions";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { jobSitesTableColumns } from "../../utils/tablesColumns";
 import { useNavigate } from "react-router-dom";
+import { toggleAddJobsiteModal } from "../../store/actions/modals.action";
 const JobSitesTable = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { jobsites } = useSelector((state) => state.jobsites);
 
@@ -22,7 +24,10 @@ const JobSitesTable = () => {
   });
   return (
     <Card bordered={false}>
-      <TableActions />
+      <TableActions
+        title={"Jobsites"}
+        onClickAddButton={() => dispatch(toggleAddJobsiteModal())}
+      />
       <Table columns={columnsWithNavigation} dataSource={jobsites} />
     </Card>
   );
