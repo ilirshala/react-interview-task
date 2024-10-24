@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+.error-text {
+  color: rgb(216, 6, 6);
+}
 
 body {
   margin: 0;
