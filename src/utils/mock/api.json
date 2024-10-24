@@ -31,31 +31,27 @@
   ],
   "categories": [
     {
-      "id": "1",
-      "jobsiteId": "5fc6",
-      "category": "Sidewalk Shed",
       "item": "G42295",
       "quantity": 10,
-      "description": "Hello description",
-      "notes": "hello notes"
+      "description": "hell",
+      "notes": "hello notes",
+      "id": "1"
     },
     {
-      "id": "abd1",
-      "item": "Item 1",
+      "item": "G42295",
       "quantity": 4,
       "description": "Item 1 description",
       "notes": "Item 1 Notes",
-      "jobsiteId": "5fc6",
-      "category": "Sidewalk Shed"
+      "id": "abd1"
     },
     {
-      "id": "d844",
-      "item": "A68446",
+      "item": "M721",
       "quantity": 2,
-      "description": "asdasd",
+      "description": "Description",
       "notes": "asdasdsa",
+      "category": "Sidewalk Shed",
       "jobsiteId": "5fc6",
-      "category": "Sidewalk Shed"
+      "id": "d844"
     },
     {
       "id": "1bdc",
@@ -67,13 +63,13 @@
       "category": "Scaffold"
     },
     {
-      "id": "3619",
-      "item": "F3786",
+      "item": "A41878",
       "quantity": 5,
       "description": "asdasd",
-      "notes": "asdasdsa",
+      "notes": "Notes",
       "category": "Sidewalk Shed",
-      "jobsiteId": "5fc6"
+      "jobsiteId": "5fc6",
+      "id": "3619"
     }
   ]
 }

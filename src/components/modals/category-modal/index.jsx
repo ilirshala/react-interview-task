@@ -5,7 +5,10 @@ import { Modal, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCategoryModal } from "../../../store/actions/modals.action";
 import InputField from "../../input-field";
-import { addCategory } from "../../../store/actions/categories.action";
+import {
+  addCategory,
+  updateCategory,
+} from "../../../store/actions/categories.action";
 import SearchSelect from "../../search-select";
 
 const CategoryModal = () => {
@@ -63,19 +66,18 @@ const CategoryModal = () => {
       quantity: parseInt(quantity),
       description,
       notes,
-      category: serviceDetails?.category,
-      jobsiteId: serviceDetails?.jobsiteId,
+      category: serviceDetails?.category || category?.category,
+      jobsiteId: serviceDetails?.jobsiteId || category?.jobsiteId,
     };
 
     if (category && category.id) {
-      //  dispatch(updateCategory(categoryDetails.id, payload));
+      dispatch(updateCategory(category.id, payload));
       message.success("Category updated successfully!");
     } else {
       dispatch(addCategory(payload));
       message.success("Category added successfully!");
     }
 
-    // Reset form fields
     setItem("");
     setQuantity(null);
     setDescription("");

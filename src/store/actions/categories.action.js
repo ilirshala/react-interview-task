@@ -5,6 +5,9 @@ import {
   ADD_CATEGORY,
   ADD_CATEGORY_SUCCESS,
   ADD_CATEGORY_FAIL,
+  UPDATE_CATEGORY,
+  UPDATE_CATEGORY_SUCCESS,
+  UPDATE_CATEGORY_FAIL,
 } from "../../types/categoriesActions";
 import api from "../../service/axios.interceptors";
 
@@ -38,6 +41,21 @@ export const addCategory = (body) => {
       }
     } catch (error) {
       dispatch({ type: ADD_CATEGORY_FAIL, payload: error });
+    }
+  };
+};
+
+export const updateCategory = (categoryId, body) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_CATEGORY });
+    try {
+      const response = await api.put(`/categories/${categoryId}`, body);
+
+      if (response.status >= 200 && response.status < 300) {
+        dispatch({ type: UPDATE_CATEGORY_SUCCESS, payload: response.data });
+      }
+    } catch (error) {
+      dispatch({ type: UPDATE_CATEGORY_FAIL, payload: error.message });
     }
   };
 };

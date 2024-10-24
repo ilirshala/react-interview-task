@@ -5,6 +5,9 @@ import {
   ADD_CATEGORY,
   ADD_CATEGORY_SUCCESS,
   ADD_CATEGORY_FAIL,
+  UPDATE_CATEGORY,
+  UPDATE_CATEGORY_SUCCESS,
+  UPDATE_CATEGORY_FAIL,
 } from "../../types/categoriesActions";
 
 const INITAL_STATE = {
@@ -16,6 +19,10 @@ const INITAL_STATE = {
   addCategoryLoading: false,
   addCategorySuccess: false,
   addCategoryError: null,
+
+  updateCategoryLoading: false,
+  updateCategorySuccess: false,
+  updateCategoryError: null,
 };
 
 const categoriesReducer = (state = INITAL_STATE, action) => {
@@ -63,6 +70,29 @@ const categoriesReducer = (state = INITAL_STATE, action) => {
         addCategoryLoading: false,
         addCategorySuccess: false,
         addCategoryError: action.payload,
+      };
+    case UPDATE_CATEGORY:
+      return {
+        ...state,
+        updateCategoryLoading: true,
+        updateCategoryError: null,
+        updateCategoriesSuccess: false,
+      };
+    case UPDATE_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        categories: state.categories.map((category) =>
+          category.id === action.payload.id ? action.payload : category
+        ),
+        updateCategoryLoading: false,
+        updateCategoriesSuccess: true,
+      };
+    case UPDATE_CATEGORY_FAIL:
+      return {
+        ...state,
+        updateCategoryLoading: false,
+        updateCategoryError: action.payload,
+        updateCategoriesSuccess: false,
       };
     default:
       return state;
