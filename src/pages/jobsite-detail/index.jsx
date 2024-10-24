@@ -8,8 +8,8 @@ import noService from "../../assets/noService.png";
 import { getCategories } from "../../store/actions/categories.action";
 import TableActions from "../../components/jobsites-table/table-actions";
 import { categoriesTableColumns } from "../../utils/tablesColumns";
-import AddCategoryModal from "../../components/modals/add-category-modal";
-import { toggleAddCategoryModal } from "../../store/actions/modals.action";
+import CategoryModal from "../../components/modals/category-modal";
+import { toggleCategoryModal } from "../../store/actions/modals.action";
 import { useSearch } from "../../hooks/useSearch";
 
 const JobsiteDetail = () => {
@@ -45,7 +45,7 @@ const JobsiteDetail = () => {
 
   return (
     <>
-      <AddCategoryModal />
+      <CategoryModal />
       <Flex gap={"middle"} className="jobDetails">
         <Card bordered={false} className="categoriesList">
           <div className="categoriesListHeader">
@@ -82,9 +82,11 @@ const JobsiteDetail = () => {
                 title={selectedCategory}
                 onClickAddButton={() =>
                   dispatch(
-                    toggleAddCategoryModal({
+                    toggleCategoryModal({
                       jobsiteId: jobsiteId,
                       category: selectedCategory,
+                      isEditCategory: false,
+                      categoryToUpdate: null,
                     })
                   )
                 }

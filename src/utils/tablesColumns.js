@@ -59,6 +59,6 @@ export const categoriesTableColumns = [
   {
     title: "Edit",
     key: "action",
-    render: (_, record) => <EditButton />,
+    render: (_, record) => <EditButton category={record} />,
   },
 ];

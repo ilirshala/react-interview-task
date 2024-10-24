@@ -1,16 +1,18 @@
 import {
   TOGGLE_ADD_JOBSITE_MODAL,
   TOGGLE_DELETE_JOBSITE_MODAL,
-  TOGGLE_ADD_CATEGORY_MODAL,
+  TOGGLE_CATEGORY_MODAL,
 } from "../../types/modalsActions";
 
 const INITIAL_STATE = {
   isAddJobsiteModalOpen: false,
   isDeleteJobsiteModalOpen: false,
-  isAddCategoryModalOpen: false,
+  isCategoryModalOpen: false,
 
   jobsiteToDeleteId: null,
-  categoryDetails: null,
+  serviceDetails: null,
+  isEditCategory: false,
+  category: null,
 };
 
 const modalsReducer = (state = INITIAL_STATE, action) => {
@@ -26,11 +28,13 @@ const modalsReducer = (state = INITIAL_STATE, action) => {
         isDeleteJobsiteModalOpen: !state.isDeleteJobsiteModalOpen,
         jobsiteToDeleteId: action.payload,
       };
-    case TOGGLE_ADD_CATEGORY_MODAL:
+    case TOGGLE_CATEGORY_MODAL:
       return {
         ...state,
-        isAddCategoryModalOpen: !state.isAddCategoryModalOpen,
-        categoryDetails: action.payload,
+        isCategoryModalOpen: !state.isCategoryModalOpen,
+        serviceDetails: action.payload,
+        isEditCategory: action?.payload?.isEditCategory,
+        category: action?.payload?.categoryToUpdate,
       };
     default:
       return state;

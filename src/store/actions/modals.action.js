@@ -1,5 +1,5 @@
 import {
-  TOGGLE_ADD_CATEGORY_MODAL,
+  TOGGLE_CATEGORY_MODAL,
   TOGGLE_ADD_JOBSITE_MODAL,
   TOGGLE_DELETE_JOBSITE_MODAL,
 } from "../../types/modalsActions";
@@ -14,8 +14,9 @@ export const toggleDeleteJobsiteModal = (jobsiteId) => {
     dispatch({ type: TOGGLE_DELETE_JOBSITE_MODAL, payload: jobsiteId });
   };
 };
-export const toggleAddCategoryModal = (payload) => {
+
+export const toggleCategoryModal = (payload) => {
   return (dispatch) => {
-    dispatch({ type: TOGGLE_ADD_CATEGORY_MODAL, payload: payload });
+    dispatch({ type: TOGGLE_CATEGORY_MODAL, payload: payload });
   };
 };

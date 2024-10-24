@@ -65,6 +65,15 @@
       "notes": "Notes",
       "jobsiteId": "5fc6",
       "category": "Scaffold"
+    },
+    {
+      "id": "3619",
+      "item": "F3786",
+      "quantity": 5,
+      "description": "asdasd",
+      "notes": "asdasdsa",
+      "category": "Sidewalk Shed",
+      "jobsiteId": "5fc6"
     }
   ]
 }

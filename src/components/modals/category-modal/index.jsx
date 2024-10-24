@@ -1,28 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ActionButton from "../../action-button";
 import { CheckOutlined } from "@ant-design/icons";
 import { Modal, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleAddCategoryModal } from "../../../store/actions/modals.action";
+import { toggleCategoryModal } from "../../../store/actions/modals.action";
 import InputField from "../../input-field";
 import { addCategory } from "../../../store/actions/categories.action";
 import SearchSelect from "../../search-select";
 
-const AddCategoryModal = () => {
+const CategoryModal = () => {
   const dispatch = useDispatch();
-  const { isAddCategoryModalOpen, categoryDetails } = useSelector(
-    (state) => state.modals
-  );
+  const { isCategoryModalOpen, serviceDetails, isEditCategory, category } =
+    useSelector((state) => state.modals);
 
   const [item, setItem] = useState(null);
   const [quantity, setQuantity] = useState(null);
   const [description, setDescription] = useState("");
   const [notes, setNotes] = useState("");
-
   const [errors, setErrors] = useState({});
 
+  useEffect(() => {
+    if (category) {
+      setItem(category.item || "");
+      setQuantity(category.quantity || null);
+      setDescription(category.description || "");
+      setNotes(category.notes || "");
+    } else {
+      setItem(null);
+      setQuantity(null);
+      setDescription("");
+      setNotes("");
+    }
+  }, [category]);
+
   const handleCloseModal = () => {
-    dispatch(toggleAddCategoryModal());
+    dispatch(toggleCategoryModal());
   };
 
   const validateInputs = () => {
@@ -51,12 +63,19 @@ const AddCategoryModal = () => {
       quantity: parseInt(quantity),
       description,
       notes,
-      ...categoryDetails,
+      category: serviceDetails?.category,
+      jobsiteId: serviceDetails?.jobsiteId,
     };
 
-    dispatch(addCategory(payload));
-    message.success("Category added successfully!");
+    if (category && category.id) {
+      //  dispatch(updateCategory(categoryDetails.id, payload));
+      message.success("Category updated successfully!");
+    } else {
+      dispatch(addCategory(payload));
+      message.success("Category added successfully!");
+    }
 
+    // Reset form fields
     setItem("");
     setQuantity(null);
     setDescription("");
@@ -68,8 +87,8 @@ const AddCategoryModal = () => {
 
   return (
     <Modal
-      open={isAddCategoryModalOpen}
-      title="Add category"
+      open={isCategoryModalOpen}
+      title={isEditCategory ? "Edit category" : "Add category"}
       onCancel={handleCloseModal}
       footer={[
         <div
@@ -148,4 +167,4 @@ const AddCategoryModal = () => {
   );
 };
 
-export default AddCategoryModal;
+export default CategoryModal;
