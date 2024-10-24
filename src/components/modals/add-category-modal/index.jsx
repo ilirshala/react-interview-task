@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleAddCategoryModal } from "../../../store/actions/modals.action";
 import InputField from "../../input-field";
 import { addCategory } from "../../../store/actions/categories.action";
+import SearchSelect from "../../search-select";
 
 const AddCategoryModal = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const AddCategoryModal = () => {
     (state) => state.modals
   );
 
-  const [item, setItem] = useState("");
+  const [item, setItem] = useState(null);
   const [quantity, setQuantity] = useState(null);
   const [description, setDescription] = useState("");
   const [notes, setNotes] = useState("");
@@ -90,13 +91,26 @@ const AddCategoryModal = () => {
       ]}
     >
       <div style={{ display: "flex", gap: "10px" }}>
-        <InputField
-          placeholder={"Item"}
+        <SearchSelect
           label={"Item"}
           value={item}
-          onChange={(e) => setItem(e.target.value)}
+          onChange={(e) => setItem(e)}
           containerStyle={{ width: "50%" }}
+          style={{ width: "100%" }}
           errors={errors.item}
+          options={[
+            { label: "G42295", value: "G42295" },
+            { label: "M721", value: "M721" },
+            { label: "M94796", value: "M94796" },
+            { label: "S25907", value: "S25907" },
+            { label: "A68446", value: "A68446" },
+            { label: "F3786", value: "F3786" },
+            { label: "R69895", value: "R69895" },
+            { label: "A29259", value: "A29259" },
+            { label: "A41878", value: "A41878" },
+            { label: "A37244", value: "A37244" },
+            { label: "M89319", value: "M89319" },
+          ]}
         />
 
         <InputField
