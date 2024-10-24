@@ -1,6 +1,7 @@
 import { Select } from "antd";
 import React from "react";
 import "./style.css";
+import { renderError } from "../../utils/inputValidation";
 
 const SearchSelect = ({
   label,
@@ -29,7 +30,7 @@ const SearchSelect = ({
         onChange={onChange}
         variant="filled"
       />
-      {errors && <span className="error-text">{errors}</span>}
+      {renderError(errors)}
     </div>
   );
 };

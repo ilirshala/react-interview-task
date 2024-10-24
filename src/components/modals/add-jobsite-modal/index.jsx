@@ -1,5 +1,5 @@
 import { Flex, Modal, message } from "antd";
-import React, { useState } from "react";
+import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleAddJobsiteModal } from "../../../store/actions/modals.action";
 import ActionButton from "../../action-button";
@@ -8,28 +8,34 @@ import InputField from "../../input-field";
 import Dropdown from "../../categories-dropdown";
 import StatusDropdown from "../../status-dropdown";
 import { addJobsite } from "../../../store/actions/jobsites.action";
+import { useJobsiteFormModal } from "../../../hooks/useJobsiteFormModal";
+import { renderError } from "../../../utils/inputValidation";
 
 const AddJobsiteModal = () => {
   const dispatch = useDispatch();
   const { isAddJobsiteModalOpen } = useSelector((state) => state.modals);
-  const [jobsiteName, setJobsiteName] = useState("");
-  const [categories, setCategories] = useState([]);
-  const [status, setStatus] = useState("");
-  const [errors, setErrors] = useState({});
+  const {
+    jobsiteName,
+    setJobsiteName,
+    categories,
+    setCategories,
+    status,
+    setStatus,
+    errors,
+    setErrors,
+    validateInputs,
+    resetForm,
+  } = useJobsiteFormModal();
 
-  const validateInputs = () => {
-    const newErrors = {};
-    if (!jobsiteName.trim()) newErrors.jobsiteName = "Jobsite name is required";
-    if (categories.length === 0)
-      newErrors.categories = "At least one category is required";
-    if (!status || !status.key) newErrors.status = "Status is required";
-    return newErrors;
-  };
+  const handleCloseModal = useCallback(() => {
+    dispatch(toggleAddJobsiteModal());
+    resetForm();
+  }, [dispatch, resetForm]);
 
-  const handleSubmitNewJobsite = () => {
+  const handleSubmitNewJobsite = useCallback(() => {
     const validationErrors = validateInputs();
     if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors); // Set validation errors
+      setErrors(validationErrors);
       return;
     }
 
@@ -40,22 +46,17 @@ const AddJobsiteModal = () => {
     };
 
     dispatch(addJobsite(payload));
-    message.success("Jobsite added successfully"); // Show success message
-    dispatch(toggleAddJobsiteModal());
-    resetForm();
-  };
-
-  const resetForm = () => {
-    setCategories([]);
-    setStatus("");
-    setJobsiteName("");
-    setErrors({});
-  };
-
-  const handleCloseModal = () => {
-    dispatch(toggleAddJobsiteModal());
-    resetForm();
-  };
+    message.success("Jobsite added successfully");
+    handleCloseModal();
+  }, [
+    validateInputs,
+    jobsiteName,
+    categories,
+    status?.key,
+    dispatch,
+    handleCloseModal,
+    setErrors,
+  ]);
 
   return (
     <Modal
@@ -63,14 +64,11 @@ const AddJobsiteModal = () => {
       title="Add Jobsite"
       onCancel={handleCloseModal}
       footer={[
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-end",
-            gap: "10px",
-            marginTop: "70px",
-          }}
+        <Flex
+          justify="flex-end"
+          gap={10}
+          key="footer-buttons"
+          style={{ marginTop: "60px" }}
         >
           <ActionButton type="cancel" onClickCancel={handleCloseModal} />
           <ActionButton
@@ -79,7 +77,7 @@ const AddJobsiteModal = () => {
             primaryIcon={<CheckOutlined className="icon" />}
             onClickPrimary={handleSubmitNewJobsite}
           />
-        </div>,
+        </Flex>,
       ]}
     >
       <InputField
@@ -87,23 +85,21 @@ const AddJobsiteModal = () => {
         label={"Name"}
         type="text"
         value={jobsiteName}
-        onChange={(value) => setJobsiteName(value)}
+        onChange={(e) => setJobsiteName(e.target.value)}
         style={{ width: "100%" }}
         containerStyle={{ width: "100%" }}
         errors={errors.jobsiteName}
       />
 
-      <Flex gap={"middle"} style={{ marginTop: "10px" }}>
+      <Flex gap="middle" style={{ marginTop: "10px" }}>
         <div style={{ flex: 0.75 }}>
           <Dropdown categories={categories} setCategories={setCategories} />
-          {errors.categories && (
-            <p className="error-text">{errors.categories}</p>
-          )}{" "}
+          {renderError(errors.categories)}
         </div>
 
         <div style={{ flex: 0.35 }}>
           <StatusDropdown status={status} setStatus={setStatus} />
-          {errors.status && <p className="error-text">{errors.status}</p>}{" "}
+          {renderError(errors.status)}
         </div>
       </Flex>
     </Modal>

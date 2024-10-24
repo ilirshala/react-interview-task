@@ -1,5 +1,6 @@
 import { Input, InputNumber } from "antd";
 import React from "react";
+import { renderError } from "../../utils/inputValidation";
 
 const InputField = ({
   label,
@@ -51,7 +52,7 @@ const InputField = ({
     <div className="inputField" style={containerStyle}>
       {label && <h5 style={{ marginBottom: "5px" }}>{label}</h5>}
       {renderInput()}
-      {errors && <span className="error-text">{errors}</span>}
+      {renderError(errors)}
     </div>
   );
 };

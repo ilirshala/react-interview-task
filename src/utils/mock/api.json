@@ -27,6 +27,15 @@
         "Shoring"
       ],
       "status": "completed"
+    },
+    {
+      "id": "170c",
+      "jobsitename": "asdasdasd",
+      "categories": [
+        "Sidewalk Shed",
+        "Scaffold"
+      ],
+      "status": "on_hold"
     }
   ],
   "categories": [
@@ -88,6 +97,15 @@
       "category": "Sidewalk Shed",
       "jobsiteId": "5fc6",
       "id": "7146"
+    },
+    {
+      "id": "9586",
+      "item": "A41878",
+      "quantity": 2,
+      "description": "ascas",
+      "notes": "asdasdasd",
+      "category": "Sidewalk Shed",
+      "jobsiteId": "170c"
     }
   ]
 }
