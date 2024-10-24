@@ -27,6 +27,7 @@ const SearchSelect = ({
         options={options}
         value={value}
         onChange={onChange}
+        variant="filled"
       />
       {errors && <span className="error-text">{errors}</span>}
     </div>

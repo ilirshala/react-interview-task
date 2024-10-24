@@ -21,6 +21,7 @@ const InputField = ({
             value={value}
             onChange={onChange}
             style={style}
+            variant="filled"
           />
         );
       case "textarea":
@@ -31,6 +32,7 @@ const InputField = ({
             onChange={onChange}
             rows={4}
             style={style}
+            variant="filled"
           />
         );
       default:
@@ -40,6 +42,7 @@ const InputField = ({
             value={value}
             onChange={onChange}
             style={style}
+            variant="filled"
           />
         );
     }

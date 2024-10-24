@@ -56,6 +56,15 @@
       "notes": "asdasdsa",
       "jobsiteId": "5fc6",
       "category": "Sidewalk Shed"
+    },
+    {
+      "id": "1bdc",
+      "item": "M721",
+      "quantity": 3,
+      "description": "Description",
+      "notes": "Notes",
+      "jobsiteId": "5fc6",
+      "category": "Scaffold"
     }
   ]
 }
