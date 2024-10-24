@@ -1,7 +1,7 @@
 import {
   TOGGLE_ADD_JOBSITE_MODAL,
   TOGGLE_DELETE_JOBSITE_MODAL,
-} from "../actionTypes";
+} from "../../types/modalsActions";
 
 const INITIAL_STATE = {
   isAddJobsiteModalOpen: false,

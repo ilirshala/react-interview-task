@@ -8,7 +8,7 @@ import {
   DELETE_JOBSITE,
   DELETE_JOBSITE_SUCCESS,
   DELETE_JOBSITE_FAIL,
-} from "../actionTypes";
+} from "../../types/jobsitesActions";
 
 const INITIAL_STATE = {
   getJobSitesLoading: false,

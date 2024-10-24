@@ -2,11 +2,13 @@ import { Card, Flex } from "antd";
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ActionButton from "../../components/action-button";
 import noService from "../../assets/noService.png";
+import { getCategories } from "../../store/actions/categories.action";
 
 const JobsiteDetail = () => {
+  const dispatch = useDispatch();
   const { jobsiteId } = useParams();
   const { jobsites } = useSelector((state) => state.jobsites);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -19,6 +21,9 @@ const JobsiteDetail = () => {
     setSelectedCategory(category);
   };
 
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
   return (
     <Flex gap={"middle"} className="jobDetails">
       <Card bordered={false} className="categoriesList">

@@ -1,15 +1,15 @@
+import api from "../../service/axios.interceptors";
 import {
+  ADD_JOBSITE,
+  ADD_JOBSITE_FAIL,
+  ADD_JOBSITE_SUCCESS,
+  DELETE_JOBSITE,
+  DELETE_JOBSITE_FAIL,
+  DELETE_JOBSITE_SUCCESS,
   GET_JOBSITES,
   GET_JOBSITES_FAIL,
   GET_JOBSITES_SUCCESS,
-  ADD_JOBSITE,
-  ADD_JOBSITE_SUCCESS,
-  ADD_JOBSITE_FAIL,
-  DELETE_JOBSITE,
-  DELETE_JOBSITE_SUCCESS,
-  DELETE_JOBSITE_FAIL,
-} from "../actionTypes";
-import api from "../../service/axios.interceptors";
+} from "../../types/jobsitesActions";
 
 export const getJobSites = () => {
   return async (dispatch) => {

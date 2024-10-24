@@ -18,5 +18,16 @@
       ],
       "status": "in_progress"
     }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "jobsiteId": "85bd",
+      "category": "Sidewalk Shed",
+      "item": "G42295",
+      "quantity": 10,
+      "description": "Hello description",
+      "notes": "hello notes"
+    }
   ]
 }
