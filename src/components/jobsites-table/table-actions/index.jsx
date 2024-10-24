@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css";
 import { Flex, Input } from "antd";
 import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import ActionButton from "../../action-button";
@@ -12,7 +11,7 @@ const TableActions = ({
   placeholder,
 }) => {
   return (
-    <Flex className="tableActions" justify="space-between">
+    <Flex style={{ marginBottom: "20px" }} justify="space-between">
       <Flex gap={"small"} align="center">
         <h4>{title}</h4>
       </Flex>
@@ -21,7 +20,7 @@ const TableActions = ({
           size="medium"
           variant="filled"
           placeholder={placeholder}
-          className="searchInput"
+          style={{ width: "450px" }}
           prefix={<SearchOutlined />}
           value={searchValue}
           onChange={onChangeSearch}

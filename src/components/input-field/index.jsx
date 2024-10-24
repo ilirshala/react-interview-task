@@ -1,6 +1,5 @@
 import { Input, InputNumber } from "antd";
 import React from "react";
-import "./style.css";
 
 const InputField = ({
   label,
@@ -50,7 +49,7 @@ const InputField = ({
 
   return (
     <div className="inputField" style={containerStyle}>
-      {label && <h5 className="inputField-label">{label}</h5>}
+      {label && <h5 style={{ marginBottom: "5px" }}>{label}</h5>}
       {renderInput()}
       {errors && <span className="error-text">{errors}</span>}
     </div>
