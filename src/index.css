@@ -6,6 +6,17 @@
 .error-text {
   color: rgb(216, 6, 6);
 }
+.ant-table-thead > tr > th {
+  background-color: #fff !important;
+}
+
+.ant-table-tbody > tr:nth-child(odd) {
+  background-color: #f4f4f4;
+}
+
+.ant-table-tbody > tr:nth-child(even) {
+  background-color: #fff;
+}
 
 body {
   margin: 0;
