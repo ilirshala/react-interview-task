@@ -2,6 +2,9 @@ import {
   GET_CATEGORIES,
   GET_CATEGORIES_FAIL,
   GET_CATEGORIES_SUCCESS,
+  ADD_CATEGORY,
+  ADD_CATEGORY_SUCCESS,
+  ADD_CATEGORY_FAIL,
 } from "../../types/categoriesActions";
 import api from "../../service/axios.interceptors";
 
@@ -21,6 +24,20 @@ export const getCategories = (jobsiteId) => {
       }
     } catch (error) {
       dispatch({ type: GET_CATEGORIES_FAIL, payload: error.message });
+    }
+  };
+};
+
+export const addCategory = (body) => {
+  return async (dispatch) => {
+    dispatch({ type: ADD_CATEGORY });
+    try {
+      const response = await api.post("/categories", body);
+      if (response.status >= 200 && response.status < 300) {
+        dispatch({ type: ADD_CATEGORY_SUCCESS, payload: response.data });
+      }
+    } catch (error) {
+      dispatch({ type: ADD_CATEGORY_FAIL, payload: error });
     }
   };
 };

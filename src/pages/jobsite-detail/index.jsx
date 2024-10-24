@@ -8,6 +8,8 @@ import noService from "../../assets/noService.png";
 import { getCategories } from "../../store/actions/categories.action";
 import TableActions from "../../components/jobsites-table/table-actions";
 import { categoriesTableColumns } from "../../utils/tablesColumns";
+import AddCategoryModal from "../../components/modals/add-category-modal";
+import { toggleAddCategoryModal } from "../../store/actions/modals.action";
 
 const JobsiteDetail = () => {
   const dispatch = useDispatch();
@@ -29,51 +31,62 @@ const JobsiteDetail = () => {
   useEffect(() => {
     dispatch(getCategories(jobsiteId));
   }, [dispatch, jobsiteId]);
+
   return (
-    <Flex gap={"middle"} className="jobDetails">
-      <Card bordered={false} className="categoriesList">
-        <div className="categoriesListHeader">
-          <h3>{selectedJobsite?.jobsitename}</h3>
-        </div>
-        <ul>
-          {selectedJobsite?.categories?.map((cat) => (
-            <li
-              key={cat}
-              className={selectedCategory === cat ? "selectedCategory" : ""}
-              onClick={() => handleCategoryClick(cat)}
-            >
-              {cat}
-            </li>
-          ))}
-        </ul>
-        <div className="buttonContainer">
-          <ActionButton type="back" />
-        </div>
-      </Card>
-      <Card bordered={false} className="detailsTable">
-        <div className="categoriesListHeader">
-          <h3>Data Grid</h3>
-        </div>
-        {selectedCategory === null ? (
-          <div className="detailsTableNoService">
-            <img src={noService} alt="" />
-            <h4>No Service Selected</h4>
-            <p>Please select a service on your left to proceed.</p>
+    <>
+      <AddCategoryModal />
+      <Flex gap={"middle"} className="jobDetails">
+        <Card bordered={false} className="categoriesList">
+          <div className="categoriesListHeader">
+            <h3>{selectedJobsite?.jobsitename}</h3>
           </div>
-        ) : (
-          <>
-            <TableActions
-              title={selectedCategory}
-              // onClickAddButton={() => dispatch(toggleAddJobsiteModal())}
-            />
-            <Table
-              columns={categoriesTableColumns}
-              dataSource={filterCategoriesByCategory}
-            />
-          </>
-        )}
-      </Card>
-    </Flex>
+          <ul>
+            {selectedJobsite?.categories?.map((cat) => (
+              <li
+                key={cat}
+                className={selectedCategory === cat ? "selectedCategory" : ""}
+                onClick={() => handleCategoryClick(cat)}
+              >
+                {cat}
+              </li>
+            ))}
+          </ul>
+          <div className="buttonContainer">
+            <ActionButton type="back" />
+          </div>
+        </Card>
+        <Card bordered={false} className="detailsTable">
+          <div className="categoriesListHeader">
+            <h3>Data Grid</h3>
+          </div>
+          {selectedCategory === null ? (
+            <div className="detailsTableNoService">
+              <img src={noService} alt="" />
+              <h4>No Service Selected</h4>
+              <p>Please select a service on your left to proceed.</p>
+            </div>
+          ) : (
+            <>
+              <TableActions
+                title={selectedCategory}
+                onClickAddButton={() =>
+                  dispatch(
+                    toggleAddCategoryModal({
+                      jobsiteId: jobsiteId,
+                      category: selectedCategory,
+                    })
+                  )
+                }
+              />
+              <Table
+                columns={categoriesTableColumns}
+                dataSource={filterCategoriesByCategory}
+              />
+            </>
+          )}
+        </Card>
+      </Flex>
+    </>
   );
 };
 

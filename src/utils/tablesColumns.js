@@ -29,7 +29,7 @@ export const categoriesTableColumns = [
     title: "Nr.",
     dataIndex: "id",
     key: "id",
-    render: (_, { id }) => <p>{id}</p>,
+    render: (text, record, index) => <p>{index + 1}</p>,
   },
   {
     title: "Item",
