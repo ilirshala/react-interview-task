@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import { Card, Table } from "antd";
-import TableActions from "./table-actions";
+import TableActions from "../table-actions";
 import { useDispatch, useSelector } from "react-redux";
 import { jobSitesTableColumns } from "../../utils/tablesColumns";
 import { useNavigate } from "react-router-dom";

@@ -1,7 +1,7 @@
 import { Card, Table } from "antd";
 import React, { useMemo, useState } from "react";
 import noService from "../../../assets/noService.png";
-import TableActions from "../../jobsites-table/table-actions";
+import TableActions from "../../table-actions";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCategoryModal } from "../../../store/actions/modals.action";
 import { useParams } from "react-router-dom";

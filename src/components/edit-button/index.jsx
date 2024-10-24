@@ -7,7 +7,6 @@ import { toggleCategoryModal } from "../../store/actions/modals.action";
 const EditButton = ({ category }) => {
   const dispatch = useDispatch();
   const handleEditButton = () => {
-    console.log(category, "category");
     dispatch(
       toggleCategoryModal({ categoryToUpdate: category, isEditCategory: true })
     );

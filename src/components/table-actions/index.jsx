@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Input } from "antd";
 import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
-import ActionButton from "../../action-button";
+import ActionButton from "../action-button";
 
 const TableActions = ({
   title,
