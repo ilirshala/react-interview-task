@@ -9,6 +9,7 @@ const TableActions = ({
   searchValue,
   onChangeSearch,
   onClickAddButton,
+  placeholder,
 }) => {
   return (
     <Flex className="tableActions" justify="space-between">
@@ -19,7 +20,7 @@ const TableActions = ({
         <Input
           size="medium"
           variant="filled"
-          placeholder="Search a driver"
+          placeholder={placeholder}
           className="searchInput"
           prefix={<SearchOutlined />}
           value={searchValue}

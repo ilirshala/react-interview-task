@@ -1,5 +1,5 @@
 import { Card, Flex, Table } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "./style.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import TableActions from "../../components/jobsites-table/table-actions";
 import { categoriesTableColumns } from "../../utils/tablesColumns";
 import AddCategoryModal from "../../components/modals/add-category-modal";
 import { toggleAddCategoryModal } from "../../store/actions/modals.action";
+import { useSearch } from "../../hooks/useSearch";
 
 const JobsiteDetail = () => {
   const dispatch = useDispatch();
@@ -17,11 +18,21 @@ const JobsiteDetail = () => {
   const { jobsites } = useSelector((state) => state.jobsites);
   const { categories } = useSelector((state) => state.categories);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const filterCategoriesByCategory = categories?.filter(
-    (category) => category?.category === selectedCategory
-  );
-  const selectedJobsite = jobsites?.find(
-    (jobsite) => jobsite?.id === jobsiteId
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const selectedJobsite = useMemo(() => {
+    return jobsites?.find((jobsite) => jobsite?.id === jobsiteId);
+  }, [jobsites, jobsiteId]);
+
+  const filterCategoriesByCategory = useMemo(() => {
+    return categories?.filter(
+      (category) => category?.category === selectedCategory
+    );
+  }, [categories, selectedCategory]);
+
+  const { filteredItems } = useSearch(
+    searchQuery,
+    filterCategoriesByCategory || []
   );
 
   const handleCategoryClick = (category) => {
@@ -77,10 +88,13 @@ const JobsiteDetail = () => {
                     })
                   )
                 }
+                searchValue={searchQuery}
+                onChangeSearch={(e) => setSearchQuery(e.target.value)}
+                placeholder={"Search category"}
               />
               <Table
                 columns={categoriesTableColumns}
-                dataSource={filterCategoriesByCategory}
+                dataSource={filteredItems}
               />
             </>
           )}
