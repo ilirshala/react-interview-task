@@ -6,11 +6,13 @@ export const jobSitesTableColumns = [
     title: "Jobsite Name",
     dataIndex: "jobsitename",
     key: "jobsitename",
+    align: "center",
   },
   {
     title: "Status",
     dataIndex: "status",
     key: "status",
+    align: "center",
     render: (_, { status }) => (
       <>
         <StatusCard status={status} cardSize="small" />
