@@ -1,7 +1,3 @@
-.jobDetails {
-  padding: 15px;
-}
-
 .categoriesList {
   flex: 0.2;
   padding: 0;
@@ -44,42 +40,4 @@
 .categoriesList ul .selectedCategory {
   background-color: #1264a3;
   color: white;
-}
-.buttonContainer {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  position: absolute;
-  bottom: 0;
-}
-.detailsTable {
-  flex: 0.8;
-  height: 50vh;
-}
-.detailsTable .ant-card-body {
-  padding: 0;
-  height: 100%;
-}
-.detailsTableNoService {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  flex: 1;
-  gap: 5px;
-}
-.detailsTableNoService img {
-  height: 150px;
-  object-fit: contain;
-}
-.detailsTableNoService h1 {
-  font-size: 16px;
-  font-weight: 600;
-}
-.detailsTableNoService p {
-  font-size: 16px;
-  font-weight: 400;
 }
