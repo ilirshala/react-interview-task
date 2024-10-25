@@ -19,8 +19,11 @@
 .status-card.completed {
   background-color: #7ac14d;
 }
-.status-card.in_progress {
+.status-card.on_road {
   background-color: #ecde7c;
+}
+.status-card.in_progress {
+  background-color: #b3d99b;
 }
 .status-card.on_hold {
   background-color: #fe4c4a;

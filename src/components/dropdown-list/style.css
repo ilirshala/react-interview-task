@@ -49,7 +49,12 @@
   background-color: #b3d99b;
   color: white;
 }
+
+.dropdownListItem.statusItem:nth-child(3):hover {
+  background-color: #ecde7c;
+  color: white;
+}
 .dropdownListItem.statusItem:last-child:hover {
-  background: #ecde7c;
+  background: #ff7370;
   color: white;
 }

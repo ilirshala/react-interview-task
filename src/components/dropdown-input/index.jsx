@@ -11,7 +11,8 @@ const DropdownInput = ({
   const getDotColor = (item) => {
     if (item === "Completed") return "#7AC14D";
     else if (item === "In progress") return "#B3D99B";
-    else return "#ECDE7C";
+    else if (item === "On Road") return "#ECDE7C";
+    else return "#FE4C4A";
   };
   return (
     <div

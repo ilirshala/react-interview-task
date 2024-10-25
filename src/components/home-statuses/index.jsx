@@ -9,10 +9,10 @@ const HomeStatuses = () => {
   return (
     <Card className="home-statuses" bordered={false}>
       <StatusCard
-        status="in_progress"
+        status="on_road"
         itemsLength={
           jobsites?.filter(
-            (jobsite) => jobsite?.status?.toLowerCase() === "in_progress"
+            (jobsite) => jobsite?.status?.toLowerCase() === "on_road"
           )?.length
         }
       />

@@ -14,6 +14,10 @@ const StatusDropdown = ({ status, setStatus }) => {
       label: "In progress",
       key: "in_progress",
     },
+    {
+      label: "On Road",
+      key: "on_road",
+    },
     { label: "On Hold", key: "on_hold" },
   ];
 
