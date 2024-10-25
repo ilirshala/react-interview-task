@@ -1,0 +1,130 @@
+{
+  "jobsites": [
+    {
+      "id": "85bd",
+      "jobsitename": "asdasd",
+      "categories": [
+        "Scaffold"
+      ],
+      "status": "in_progress"
+    },
+    {
+      "id": "e2d7",
+      "jobsitename": "ascasc",
+      "categories": [
+        "Sidewalk Shed",
+        "Scaffold",
+        "Shoring"
+      ],
+      "status": "in_progress"
+    },
+    {
+      "id": "5fc6",
+      "jobsitename": "Test Jobsite name",
+      "categories": [
+        "Sidewalk Shed",
+        "Scaffold",
+        "Shoring"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "170c",
+      "jobsitename": "asdasdasd",
+      "categories": [
+        "Sidewalk Shed",
+        "Scaffold"
+      ],
+      "status": "on_hold"
+    },
+    {
+      "id": "1f70",
+      "jobsitename": "gs",
+      "categories": [
+        "Shoring",
+        "Sidewalk Shed",
+        "Scaffold"
+      ],
+      "status": "on_hold"
+    },
+    {
+      "id": "070f",
+      "jobsitename": "asdasd",
+      "categories": [
+        "Scaffold",
+        "Sidewalk Shed"
+      ],
+      "status": "on_hold"
+    }
+  ],
+  "categories": [
+    {
+      "item": "G42295",
+      "quantity": 10,
+      "description": "hell",
+      "notes": "hello notes",
+      "id": "1"
+    },
+    {
+      "item": "G42295",
+      "quantity": 4,
+      "description": "Item 1 description",
+      "notes": "Item 1 Notes",
+      "id": "abd1"
+    },
+    {
+      "item": "M721",
+      "quantity": 2,
+      "description": "Description",
+      "notes": "Notes33333",
+      "category": "Sidewalk Shed",
+      "jobsiteId": "5fc6",
+      "id": "d844"
+    },
+    {
+      "id": "1bdc",
+      "item": "M721",
+      "quantity": 3,
+      "description": "Description",
+      "notes": "Notes",
+      "jobsiteId": "5fc6",
+      "category": "Scaffold"
+    },
+    {
+      "item": "A41878",
+      "quantity": 5,
+      "description": "asdasd",
+      "notes": "Notes",
+      "category": "Sidewalk Shed",
+      "jobsiteId": "5fc6",
+      "id": "3619"
+    },
+    {
+      "item": "A29259",
+      "quantity": 3,
+      "description": "cascasc",
+      "notes": "ascascasc",
+      "category": "Sidewalk Shed",
+      "jobsiteId": "5fc6",
+      "id": "0532"
+    },
+    {
+      "item": "M721",
+      "quantity": 3,
+      "description": "asdasd",
+      "notes": "asdasd",
+      "category": "Sidewalk Shed",
+      "jobsiteId": "5fc6",
+      "id": "7146"
+    },
+    {
+      "id": "9586",
+      "item": "A41878",
+      "quantity": 2,
+      "description": "ascas",
+      "notes": "asdasdasd",
+      "category": "Sidewalk Shed",
+      "jobsiteId": "170c"
+    }
+  ]
+}

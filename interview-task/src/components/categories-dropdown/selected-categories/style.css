@@ -1,0 +1,21 @@
+.selectedCategories {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 10px;
+  position: absolute;
+  z-index: 100;
+}
+.selectedCategory {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.selectedCategory .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 200px;
+}
+.selectedCategory p {
+  font-size: 12px;
+}

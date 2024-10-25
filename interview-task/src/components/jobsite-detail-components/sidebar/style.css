@@ -1,0 +1,43 @@
+.categoriesList {
+  flex: 0.2;
+  padding: 0;
+  height: 50vh;
+}
+.categoriesListHeader {
+  width: 100%;
+  height: 40px;
+  /* padding: 24px; */
+  background: #f8f8fa;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+.categoriesList .ant-card-body {
+  padding: 0;
+}
+.categoriesList ul {
+  list-style: none;
+  padding: 5px 15px;
+}
+.categoriesList ul li {
+  width: 100%;
+  background-color: #f8f8fa;
+  color: black;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  cursor: pointer;
+  transition: 0.2s linear;
+  margin-top: 10px;
+}
+.categoriesList ul li:hover {
+  background-color: #cccccc;
+}
+.categoriesList ul .selectedCategory {
+  background-color: #1264a3;
+  color: white;
+}

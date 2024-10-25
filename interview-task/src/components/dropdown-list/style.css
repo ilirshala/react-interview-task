@@ -1,0 +1,60 @@
+.dropdownList {
+  background-color: #fff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 200;
+  height: auto;
+  opacity: 0;
+  transition: height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  overflow: hidden;
+}
+.dropdownList.show {
+  opacity: 1;
+  height: auto;
+}
+.dropdownListItem {
+  border-bottom: 1px solid #f4f4f4;
+  padding: 4px 11px;
+  color: black;
+  transition: ease-in 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dropdownListItem:last-child {
+  border-bottom: 0;
+}
+.dropdownListItem:first-child:hover {
+  background: #b3d99b;
+  color: white;
+}
+.dropdownListItem:nth-child(2):hover {
+  background-color: #ecde7c;
+  color: white;
+}
+.dropdownListItem:last-child:hover {
+  background: #d57efd;
+  color: white;
+}
+
+.dropdownListItem.statusItem:first-child:hover {
+  background: #7ac14d;
+  color: white;
+}
+.dropdownListItem.statusItem:nth-child(2):hover {
+  background-color: #b3d99b;
+  color: white;
+}
+
+.dropdownListItem.statusItem:nth-child(3):hover {
+  background-color: #ecde7c;
+  color: white;
+}
+.dropdownListItem.statusItem:last-child:hover {
+  background: #ff7370;
+  color: white;
+}

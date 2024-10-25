@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.error-text {
+  color: rgb(216, 6, 6);
+}
+.ant-table-thead > tr > th {
+  background-color: #fff !important;
+}
+
+.ant-table-tbody > tr:nth-child(odd) {
+  background-color: #f4f4f4;
+}
+
+.ant-table-tbody > tr:nth-child(even) {
+  background-color: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
