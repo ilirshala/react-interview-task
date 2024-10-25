@@ -1,41 +1,81 @@
-# Flex Business Solutions Tech Test - Inventory Management
 
-In Flex Business Solutions, we aim to provide excellence and efficiency on all our lines of code in order to support the day-to-day activities of the company using our software solutions. In this task, you will be provided with a simple design of an app, fetching a list of products from an external source and allowing the user to search or filter among the list.
+# Jobsite Management Application
 
+This is a simple application for managing job sites. Users can add jobsites with a name, category, and status. Clicking on a jobsite allows users to view more details, including services grouped by category.
 
-### Tech Test Overview
-We have provided below the Figma link of this task. On the main page, we have a list of job sites with their corresponding status. By clicking the "Create" button we can create other job sites and add them to the list. By clicking to the jobsite name, we are redirected to the inventory dashboard for that particular job site. There, we can update items inside categories by double cliking on each cell where the content of that row will automatically be shown on the modal. Updating any specific column and hitting "Save", the content of the table should be automatically updated.
+## Installation
 
-[FIGMA] [https://www.figma.com/file/uOxY3AiUFaGuxsU9nk0H1O/ReactJs-Test?node-id=0%3A1]
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ilirshala/react-interview-task
+   cd react-interview-task/interview-task
+   ```
 
-We love to see:
-- Functional code
-- Good design
-- Unit testing
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
+## Running the Application
 
-### Notes
-All of you work should take place inside this repository.
+1. **Start the Backend (Mocked with JSON Server):**
+   - The backend is mocked using JSON Server.
+   - To start the backend, run:
+     ```bash
+     npm run backend
+     ```
+   - JSON Server will start, providing endpoints to manage job sites data.
 
-You are free to use any packages that would help with this task
+2. **Start the Frontend:**
+   - Run the frontend application using:
+     ```bash
+     npm start
+     ```
+   - This will open the application in development mode at `http://localhost:3000`.
 
-You do not need to add additional security measures as part of this exercise.
-We're interested in how you break down the work and build your solution in a clean, easy-to-use, reusable and testable manner.
+## Security Enhancements
 
+Here are some potential steps to make this application more secure:
 
-## Deliverables
-You must follow the Figma design and need to add the functionality of:
-a) Create new job sites with their categories
-c) Search job sites & items on the inventory page
-b) Update items on each category
+1. **Authentication and Authorization**:
+   - Implement an authentication layer using JWT (JSON Web Tokens) or OAuth to ensure that only authorized users can access or modify jobsite data.
+   - Enforce role-based access control (RBAC) to restrict access based on user roles (e.g., admin, viewer).
 
-**Create a folder inside the repository and include finished screenshots of the app.**
-**Please make sure to update the readme with**:
+2. **Input Validation and Sanitization**:
+   - Validate and sanitize all inputs (especially jobsite names, categories, and statuses) to prevent injection attacks.
+   - Use libraries like `validator` for frontend input validation and ensure similar validations on the backend.
 
-- How to run your app with all the necessary details
-- Relating to the task please add answers to the following questions;
-    1. How might you make this app more secure?
-    2. How would you make this solution scale to millions of records?
-  
+3. **Rate Limiting**:
+   - Implement rate limiting on the backend to prevent abuse, such as repetitive data requests or malicious activities that can overload the server.
 
-On completion email a link to your repository to your contact at FLEX BUSINESS SOLUTIONS and ensure it is publicly accessible.
+4. **Secure Connections**:
+   - Ensure all API calls use HTTPS in production environments to protect data in transit.
+
+5. **Data Encryption**:
+   - Encrypt sensitive data (if any) on the backend to ensure data privacy and security.
+
+6. **Environment Variables**:
+   - Store sensitive data (API keys, tokens) in environment variables instead of hardcoding them in the codebase.
+
+## Scalability Considerations
+
+To handle millions of jobsite records, consider the following strategies:
+
+1. **Database Optimization**:
+   - Move from a JSON Server mock to a production database such as PostgreSQL, MySQL, or a NoSQL database like MongoDB that can better handle large datasets.
+   - Add indexes on frequently queried fields (e.g., jobsite name, category) to optimize search speed.
+
+2. **Pagination**:
+   - Implement pagination on both the frontend and backend to load records in chunks rather than all at once, which improves response times and reduces memory usage.
+
+3. **Caching**:
+   - Use caching solutions like Redis or in-memory caching to reduce the load on the database for frequently accessed data.
+
+4. **Load Balancing**:
+   - If traffic increases significantly, consider deploying the application on multiple servers with load balancing to evenly distribute traffic.
+
+5. **Asynchronous Processing**:
+   - For heavy computations or large data processing tasks, implement asynchronous processing with queues (e.g., RabbitMQ or AWS SQS) to prevent blocking requests.
+
+## License
+This project is licensed under the MIT License.
