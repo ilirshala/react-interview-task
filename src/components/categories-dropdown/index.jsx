@@ -3,6 +3,7 @@ import "./style.css";
 import DropdownInput from "../dropdown-input";
 import SelectedCategories from "./selected-categories";
 import DropdownList from "../dropdown-list";
+import { removeCategory } from "../../utils/utils";
 
 const CategoriesDropdown = ({ categories, setCategories }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -12,23 +13,8 @@ const CategoriesDropdown = ({ categories, setCategories }) => {
     if (!categories.includes(category)) {
       setCategories([...categories, category]);
     } else {
-      removeCategory(category);
+      removeCategory(category, setCategories);
     }
-  };
-
-  const removeCategory = (category) => {
-    setCategories((prev) => prev.filter((cat) => cat !== category));
-  };
-
-  const getBackgroundColor = (item) => {
-    if (categories.includes("Scaffold") && item === "Scaffold")
-      return "#EFD652";
-    if (categories.includes("Shoring") && item === "Shoring") return "#9640BE";
-    return categories.includes(item) && "#67AA3C";
-  };
-
-  const getTextColor = (item) => {
-    return categories.includes(item) && "#fff";
   };
 
   return (
@@ -48,8 +34,7 @@ const CategoriesDropdown = ({ categories, setCategories }) => {
       >
         <SelectedCategories
           categories={categories}
-          removeCategory={removeCategory}
-          getBackgroundColor={getBackgroundColor}
+          setCategories={setCategories}
         />
       </div>
 
@@ -58,8 +43,6 @@ const CategoriesDropdown = ({ categories, setCategories }) => {
         items={dropdownItems}
         toggleCategory={handleAddCategory}
         categories={categories}
-        getBackgroundColor={getBackgroundColor}
-        getTextColor={getTextColor}
         isInStatus={false}
       />
     </div>
