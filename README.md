@@ -7,7 +7,7 @@ This is a simple application for managing job sites. Users can add jobsites with
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/ilirshala/react-interview-task
+   git clone https://github.com/ilirshala/react-interview-task.git
    cd react-interview-task/interview-task
    ```
 
