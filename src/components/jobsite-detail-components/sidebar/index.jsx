@@ -3,6 +3,7 @@ import React from "react";
 import ActionButton from "../../action-button";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+import { getBackgroundColor } from "../../../utils/utils";
 const Sidebar = ({
   selectedJobsite,
   selectedCategory,
@@ -20,6 +21,12 @@ const Sidebar = ({
             key={cat}
             className={selectedCategory === cat ? "selectedCategory" : ""}
             onClick={() => handleCategoryClick(cat)}
+            style={{
+              background:
+                selectedCategory === cat
+                  ? getBackgroundColor(cat, selectedJobsite?.categories)
+                  : "",
+            }}
           >
             {cat}
           </li>
